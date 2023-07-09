@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body{
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(180.5deg, rgb(34, 126, 34) 8.5%, rgb(99, 162, 17) 118.2%);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.login{
+  height: 415px;
+  width: 350px;
+  margin-top: 5%;
+  margin-bottom: auto;
+  background: white;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+}
+
+.logo-container{
+  position: absolute;
+  height: 170px;
+  width: 170px;
+  top: -75px;
+  border-radius: 50%;
+  background: white;
+  padding: 10px;
+  text-align: center;
+}
+.logo{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+
+.greetings{
+  position: relative;
+  top: 13%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.greetings h2{
+  font-size: 1.5em;
+  font-family: 'Quicksand', sans-serif;
+  color: black;
+}
+.greetings p{
+  font-size: 0.69rem;
+  color: black;
+  text-align: center;
+  font-weight: 600;
+}
+
+.form{
+  margin-top: 65px;
+}
+
+.input-group-text{
+  background: #137413 !important;
+  color: white !important;
+  border: 0 !important;
+  border-radius: 0.25rem 0 0 0.25rem !important;
+}
+.input_user:focus,
+.input_pass:focus{
+  box-shadow: none !important;
+  outline: none !important;
+}
+.input_user,
+.input_pass,
+.input_user::placeholder,
+.input_pass::placeholder{
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #137413;
+}
+
+.note{
+  font-size: 0.55rem;
+  font-weight: 600;
+  margin-bottom: 10%;
+}
+
+.login_container{
+  top: 1000%;
+  padding: 0;
+}
+.login_btn{
+  width: 100%;
+  background: #24ae24;
+  color: white;
+  transition: 0.55s ease;
+}
+.login_btn:hover{
+  background: #137413;
+  color: white;
+}
+.login_btn:focus{
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+

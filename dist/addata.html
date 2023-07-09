@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/addata.css">
+
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+
+  <script defer src="./bundle.js"></script>
+
+  <title>Garbo Monitoring</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/logo/logo.png">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Offside&display=swap');
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: white;
+}
+::-webkit-scrollbar-thumb {
+  background: #137413;
+  border-radius: 2px;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  place-items: center;
+  display: flex;
+}
+
+.sidebar{
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 90px;
+  height: 100vh;
+  padding: 0 1rem;
+  color: white;
+  overflow: hidden;
+  transition: all 0.5s linear;
+  background: linear-gradient(180.5deg, rgb(34, 126, 34) 8.5%, rgb(99, 162, 17) 118.2%);
+}
+.sidebar:hover{
+  width: 240px;
+  transition: 0.5s ease;
+}
+
+.logo{
+  position: sticky;
+  height: 90px;
+  padding: 55px 1px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.logo-img{
+  display: flex;
+  align-items: center;
+  
+}
+.logo-img img{
+  margin-left: -10%;
+  width: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.logo-name{
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  font-size: 0.85em;
+}
+
+.menu{
+  height: 88%;
+  position: relative;
+  list-style: none;
+  padding: 0;
+}
+
+.menu li{
+  padding: 1rem;
+  margin: 8px 0;
+  border-radius: 8px;
+  transition: all 0.5s ease-in-out;
+}
+.menu li:hover,
+.active{
+  background: #f5fefd;
+}
+
+.menu a{
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.menu a span{
+  overflow: hidden;
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.logout{
+  position: absolute;
+  left: 0;
+  bottom: 10%;
+  width: 100%;
+}
+
+/*main*/
+.main{
+  position: relative;
+  background: #eaffd0;
+  width: 100%;
+  height: 100vh;
+  padding: 1rem;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background: white;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 10px 2rem;
+  margin-bottom: 1rem;
+}
+.header img{
+  margin-left: 20%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.header-title{
+  color: #137413;
+}
+
+.user{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/*content*/
+.content{
+  max-width: 800px;
+  margin: 4% auto;
+  background: white;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  border-radius: 10px;
+}
+</style>
+
+</head>
+
+<body>
+  
+  <div class="sidebar">
+    <div class="logo">
+      <div class="logo-img">
+        <img src="assets/img/logo/logo.png">
+      </div>
+      <span class="logo-name">Garbo Monitoring</span>
+    </div>
+
+      <ul class="menu">
+        <li>
+          <a href="adhome.html" >
+            <img width="24" height="24" src="https://img.icons8.com/puffy/24/experimental-home-puffy.png" alt="experimental-home-puffy"/>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="adsched.html">
+            <img width="24" height="24" src="https://img.icons8.com/puffy/24/experimental-calendar-puffy.png" alt="experimental-calendar-puffy"/>
+            <span>Schedules</span>
+          </a>
+        </li>
+        <li>
+          <a href="admap.html">
+            <img width="24" height="24" src="https://img.icons8.com/puffy/24/experimental-marker-puffy.png" alt="experimental-marker-puffy"/>
+            <span>Map</span>
+          </a>
+        </li>
+        <li>
+          <a href="aduser.html">
+            <img width="24" height="24" src="https://img.icons8.com/puffy/24/experimental-user-puffy.png" alt="experimental-user-puffy"/>
+            <span>Respondents</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="addata.html">
+            <img width="24" height="24" src="https://img.icons8.com/puffy/24/experimental-filter-puffy.png" alt="experimental-filter-puffy"/>
+            <span>Data Visualization</span>
+          </a>
+        </li>
+        <li class="logout">
+          <a href="">
+            <img width="24" height="24" src="https://img.icons8.com/external-kmg-design-basic-outline-kmg-design/24/external-logout-ui-essentials-kmg-design-basic-outline-kmg-design.png" alt="external-logout-ui-essentials-kmg-design-basic-outline-kmg-design"/>
+            <input type="button" id="logout" name="logout" value="Log out" class="btn login_btn">
+          </a>
+        </li>
+      </ul>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <div class="header-title">
+        <span>Data Visualization</span>
+        <h2>Garbage Collection Monitoring Report</h2>
+      </div>
+      
+      <div class="user">
+        <div class="">
+          <img src="assets/img/side-img/admin-profile.png">
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <canvas id="myChart"></canvas>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+
+   
+  
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="js/adhome.js"></script>
+  
+</body>
+</html>
+
+<script type="module">
+
+
+  
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+	import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+	import { getFirestore, setDoc, addDoc, doc, updateDoc, deleteDoc, getDoc, query, collection, where, getDocs, onSnapshot  } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+	
+	
+	
+  const firebaseConfig = {
+  apiKey: "AIzaSyCWfJLhjnXwnoZuA3H-2-N21Tb44uPggjM",
+  authDomain: "garbo-monitoring-64bef.firebaseapp.com",
+  projectId: "garbo-monitoring-64bef",
+  storageBucket: "garbo-monitoring-64bef.appspot.com",
+  messagingSenderId: "1053791292726",
+  appId: "1:1053791292726:web:539ef2986dfe83e243f797",
+  measurementId: "G-TD2F6PJYSS"
+};
+
+// Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
+
+	
+	const app = initializeApp(firebaseConfig);
+	const db = getFirestore(app);
+	const auth = getAuth();
+	console.log(app);
+
+  document.getElementById("logout").addEventListener("click", function() {
+      signOut(auth).then(() => {
+        alert('Thank you for using our app. Goodbye for now!');
+        document.getElementById('logout').style.display = 'none';
+        window.location.href = "index.html";
+  
+      }).catch((error) => {
+        console.log(error);
+      });		  		  
+    });
+
+
+const ctx = document.getElementById('myChart');
+
+
+const barangayData = [
+
+  
+  {week: '1st week', barangays: { delcarmen: 100, bagongsilang: 500, saray: 800, tominoboproper: 200, ubaldolaya: 300} },
+  {week: '2nd week', barangays: { delcarmen: 500, bagongsilang: 900, saray: 200, tominoboproper: 400, ubaldolaya: 900} },
+  {week: '3rd week', barangays: { delcarmen: 200, bagongsilang: 300, saray: 600, tominoboproper: 600, ubaldolaya: 200} },
+  {week: '4th week', barangays: { delcarmen: 900, bagongsilang: 800, saray: 700, tominoboproper: 100, ubaldolaya: 500} }
+
+
+];
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    datasets: [{  
+      label: 'Del Carmen',
+      data: barangayData,
+      borderColor:'rgba(88,24,69,1)',
+      backgroundColor:'rgba(88,24,69,0.2)',
+      tension: 0.4,
+      parsing: {
+        yAxisKey: 'barangays.delcarmen'
+      }
+    },
+
+    {
+      label: 'Bagong Silang',
+      data: barangayData,
+      borderColor:'rgba(144,12,63,1)',
+      backgroundColor:'rgba(144,12,63,0.2)',
+      tension: 0.4,
+      parsing: {
+        yAxisKey: 'barangays.bagongsilang'
+      }
+    },
+
+    {
+      label: 'Saray',
+      data: barangayData,
+      borderColor:'rgba(255,195,0,1)',
+      backgroundColor:'rgba(255,195,0,0.2)',
+      tension: 0.4,
+      parsing: {
+        yAxisKey: 'barangays.saray'
+      }
+    },
+
+    {
+      label: 'Tominobo Proper',
+      data: barangayData,
+      borderColor:'rgba(199,0,57,1)',
+      backgroundColor:'rgba(199,0,57,0.2)',
+      tension: 0.4,
+      parsing: {
+        yAxisKey: 'barangays.tominoboproper'
+      }
+    },
+
+    {
+      label: 'Ubaldo Laya',
+      data: barangayData,
+      borderColor:'rgba(255,87,51,1)',
+      backgroundColor:'rgba(255,87,51,0.2)',
+      tension: 0.4,
+      parsing: { yAxisKey: 'barangays.ubaldolaya' }
+    }
+  ]
+  },
+  options: {
+    parsing: {xAxisKey: 'week'},
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+</script>
+
+
+
+
+
+
+</script>

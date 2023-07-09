@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="css/login.css">
+
+  <script defer src="./bundle.js"></script>
+
+  <title>Garbo Monitoring</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/logo/logo.png">
+</head>
+
+<body>
+  <div class="container h-100">
+    <div class="d-flex justify-content-center h-100">
+      <div class="login">
+        <div class="d-flex justify-content-center">
+          <div class="logo-container">
+            <img src="assets/img/logo/logo.png" class="logo">
+          </div>
+        </div>
+
+        <div class="greetings">
+          <h2>Welcome Back!</h2>
+          <p>You're about to sign in to the administrator side of the Garbo Monitoring app.</p>
+        </div>
+
+        <div class="d-flex justify-content-center form">
+          <form action="">
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text" style="padding: 12px;">
+                  <img width="10" height="10" src="https://img.icons8.com/fluency-systems-filled/10/FFFFFF/user.png"/>
+                </span>
+              </div>
+              <input style="color: #137413;" type="email" name="admin_email" id="admin_email" class="form-control input_user" placeholder="Enter your email" required="required">
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text" style="padding: 12px;">
+                  <img width="10" height="10" src="https://img.icons8.com/ios-glyphs/10/FFFFFF/lock--v1.png" alt="lock--v1"/>
+              </div>
+              <input style="color: #137413;" type="password" name="admin_password" id="admin_password" class="form-control input_pass" placeholder="Enter your password" required="required">
+            </div>
+
+            <div class="form-group">
+              <div class="note">
+                  <p>Note: Your default email and password were already given to you.</p>
+              </div>
+          </div>
+
+          <div class="d-flex justify-content-center mt-3 login_container">
+            <input type="button" id="login" name="login" value="Sign In" class="btn login_btn">
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script type="text/javascript">
+
+    //for the whole box
+    const sr = ScrollReveal ({
+      distance: '65px',
+      duration: 2600,
+      delay: 450,
+      reset: true
+    });
+
+    sr.reveal('.login', {delay:200, origin:'top'});
+  </script>
+</body>
+</html>
+
+<script type="module">
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+  
+  
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyDkIS4w5lTvcUxCI1QMeczkcx1U-NmNj_o",
+    authDomain: "garbo-monitoring.firebaseapp.com",
+    projectId: "garbo-monitoring",
+    storageBucket: "garbo-monitoring.appspot.com",
+    messagingSenderId: "243660048287",
+    appId: "1:243660048287:web:15a4d7a32ca9f624ce9faa",
+    measurementId: "G-FEH3JZ0VRK"
+  };
+  
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  console.log(app)
+  
+  
+  document.getElementById("login").addEventListener("click", function() {
+            var email =  document.getElementById("admin_email").value;
+            var password = document.getElementById("admin_password").value;
+            
+        //put if statement, if 
+        // else if (address === 'Saray')
+        if (email === "garbo_admin@gmail.com" && password === "admin123" ){
+          
+            signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+              // Signed in 
+              const user = userCredential.user;
+              console.log(user);
+              alert("Hey there Admin. Welcome Back!!!");
+              window.location.href = "adhome.html";
+    })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.log(errorMessage);
+              alert(errorMessage);
+            });	
+            
+          }else{
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage);
+            alert(errorMessage);
+            alert("Check credentials")
+          }
+        
+        });
+        
+        
+    
+  </script>

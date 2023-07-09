@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/aduser.css">
+
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+
+  <script defer src="./bundle.js"></script>
+
+  <title>Garbo Monitoring</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/logo/logo.png">
+</head>
+
+<body>
+  
+  <div class="sidebar">
+    <div class="logo">
+      <div class="logo-img">
+        <img src="assets/img/logo/logo.png">
+      </div>
+      <span class="logo-name">Garbo Monitoring</span>
+    </div>
+
+      <ul class="menu">
+        <li>
+          <a href="adhome.html" >
+            <img width="24" height="24" src="https://img.icons8.com/puffy/24/experimental-home-puffy.png" alt="experimental-home-puffy"/>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="adsched.html">
+            <img width="24" height="24" src="https://img.icons8.com/puffy/24/experimental-calendar-puffy.png" alt="experimental-calendar-puffy"/>
+            <span>Schedules</span>
+          </a>
+        </li>
+        <li>
+          <a href="admap.html">
+            <img width="24" height="24" src="https://img.icons8.com/puffy/24/experimental-marker-puffy.png" alt="experimental-marker-puffy"/>
+            <span>Map</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="aduser.html">
+            <img width="24" height="24" src="https://img.icons8.com/puffy/24/experimental-user-puffy.png" alt="experimental-user-puffy"/>
+            <span>Respondents</span>
+          </a>
+        </li>
+        <li>
+          <a href="addata.html">
+            <img width="24" height="24" src="https://img.icons8.com/puffy/24/experimental-filter-puffy.png" alt="experimental-filter-puffy"/>
+            <span>Data Visualization</span>
+          </a>
+        </li>
+        <li class="logout">
+          <a href="">
+            <img width="24" height="24" src="https://img.icons8.com/external-kmg-design-basic-outline-kmg-design/24/external-logout-ui-essentials-kmg-design-basic-outline-kmg-design.png" alt="external-logout-ui-essentials-kmg-design-basic-outline-kmg-design"/>
+			<input type="button" id="logout" name="logout" value="Log out" class="btn login_btn">
+          </a>
+        </li>
+      </ul>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <div class="header-title">
+        <span>Respondents' Personal Info</span>
+        <h2>Garbo Monitoring Report 2023</h2>
+      </div>
+      
+      <div class="user">
+        <div class="">
+          <img src="assets/img/side-img/admin-profile.png">
+        </div>
+      </div>
+    </div>
+		
+		<div class="report">
+			<div>
+					<table>
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Fullname</th>
+								<th>Barangay</th>
+								<th>Purok</th>
+								<th>Email</th>
+								<th>Phone Number</th>
+							</tr>
+						</thead>
+
+						<tbody id="tbody1"> </tbody>
+
+					</table>
+				</div>
+		</div>
+  </div>
+  
+</body>
+</html>
+
+<script type="module">
+   
+	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+	import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+	import { getFirestore, setDoc, addDoc, doc, updateDoc, deleteDoc, getDoc, query, collection, where, getDocs, onSnapshot  } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+	
+	
+	
+	const firebaseConfig = {
+		apiKey: "AIzaSyCWfJLhjnXwnoZuA3H-2-N21Tb44uPggjM",
+		authDomain: "garbo-monitoring-64bef.firebaseapp.com",
+		projectId: "garbo-monitoring-64bef",
+		storageBucket: "garbo-monitoring-64bef.appspot.com",
+		messagingSenderId: "1053791292726",
+		appId: "1:1053791292726:web:539ef2986dfe83e243f797",
+		measurementId: "G-TD2F6PJYSS"
+};
+
+
+
+	
+	const app = initializeApp(firebaseConfig);
+	const db = getFirestore(app);
+	const auth = getAuth();
+	console.log(app);
+	
+	
+	
+	document.getElementById("logout").addEventListener("click", function() {
+      signOut(auth).then(() => {
+        alert('Thank you for using our app. Goodbye for now!');
+        document.getElementById('logout').style.display = 'none';
+        window.location.href = "index.html";
+  
+      }).catch((error) => {
+        console.log(error);
+      });		  		  
+    });
+	
+	
+	
+	//------------------------------------Get Data------------------------------------------//
+	var dataNo =0;
+	var datasets = [];
+	var tbody = document.getElementById('tbody1');
+	
+	
+	function AddItemToTable(name, address, purok, email, phone){
+	  var trow = document.createElement('tr');
+	  var td1 = document.createElement('td');
+	  var td2 = document.createElement('td');
+	  var td3 = document.createElement('td');
+	  var td4 = document.createElement('td');
+	  var td5 = document.createElement('td');
+	  var td6 = document.createElement('td');
+	
+	  td1.innerHTML = ++dataNo;
+	  td2.innerHTML = name;
+	  td3.innerHTML = address;
+	  td4.innerHTML = purok;
+	  td5.innerHTML = email;
+	  td6.innerHTML = phone;
+	  datasets.push([name, address, purok, email, phone]);
+	
+	  // trow.appendChild(td0); 
+	  trow.appendChild(td1);
+	  trow.appendChild(td2);
+	  trow.appendChild(td3);
+	  trow.appendChild(td4);
+	  trow.appendChild(td5);
+	  trow.appendChild(td6);
+
+	  tbody.appendChild(trow);
+	
+	
+	}
+	
+
+
+	function populateTableList(UserDocList){
+	  dataNo=0;
+	  tbody.innerHTML="";
+	  UserDocList.forEach(element => {
+		AddItemToTable(element.name, element.address, element.purok, element.email, element.phone);
+	
+	  })
+	}
+	
+	
+	function GetAllDataRealtime(){
+	  const q = query(collection(db, "users"))
+	  const list = onSnapshot(q, (querySnapshot) => {
+		 var datasetss = [];
+	
+		querySnapshot.forEach(doc => {
+		  const data = doc.data();
+		  datasetss.push({...data, id: doc.id}); 
+		  console.log(doc.id)
+		})
+		// datasetss.sort((a, b) => (a.name > b.name) ? 1 : -1);
+		populateTableList(datasetss)
+	  })
+	}
+	
+	window.onload = GetAllDataRealtime;
+	
+	
+	
+	
+	
+	
+	</script>
